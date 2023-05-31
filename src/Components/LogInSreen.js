@@ -8,13 +8,11 @@ import {
   View,
   KeyboardAvoidingView,
 } from 'react-native';
-import SvgComponent from './SvgComponents/SvgComponentAdd';
 
 export default function Registration() {
   const [isFocused, setIsFocused] = useState({
     input1: false,
     input2: false,
-    input3: false,
   });
 
   const handleFocus = (inputName) => {
@@ -29,46 +27,30 @@ export default function Registration() {
     <SafeAreaView style={styles.RegContainer}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
         style={styles.Keyboard}
       >
         <View style={styles.form}>
-          <View style={styles.photoBox}>
-            <View style={styles.photoContainer}>
-              <SvgComponent />
-            </View>
-          </View>
-          <Text style={styles.RegTitle}>Реєстрація</Text>
-          <TextInput
-            style={[
-              styles.input,
-              styles.inputLogin,
-              isFocused.input1 && styles.inputFocused,
-            ]}
-            placeholder="Логін"
-            onFocus={() => handleFocus('input1')}
-            onBlur={() => handleBlur('input1')}
-          />
+          <Text style={styles.RegTitle}>Увійти</Text>
           <TextInput
             style={[
               styles.input,
               styles.inputMail,
-              isFocused.input2 && styles.inputFocused,
+              isFocused.input1 && styles.inputFocused,
             ]}
             placeholder="Адреса електронної пошти"
-            onFocus={() => handleFocus('input2')}
-            onBlur={() => handleBlur('input2')}
+            onFocus={() => handleFocus('input1')}
+            onBlur={() => handleBlur('input1')}
           />
           <View style={styles.passContainer}>
             <TextInput
               style={[
                 styles.input,
                 styles.inputPass,
-                isFocused.input3 && styles.inputFocused,
+                isFocused.input2 && styles.inputFocused,
               ]}
               placeholder="Пароль"
-              onFocus={() => handleFocus('input3')}
-              onBlur={() => handleBlur('input3')}
+              onFocus={() => handleFocus('input2')}
+              onBlur={() => handleBlur('input2')}
             />
             <TouchableOpacity style={styles.showPasswordButton}>
               <Text style={styles.showPasswordText}>Показати</Text>
@@ -78,10 +60,10 @@ export default function Registration() {
       </KeyboardAvoidingView>
       <View style={styles.btnContainer}>
         <TouchableOpacity style={styles.registerBtn}>
-          <Text style={styles.registerBtnText}>Зареєстуватися</Text>
+          <Text style={styles.registerBtnText}>Увійти</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.logIn}>
-          <Text style={styles.logInText}>Вже є акаунт? Увійти</Text>
+          <Text style={styles.logInText}>Немає акаунту? Зареєструватися</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -100,26 +82,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingRight: 16,
     paddingLeft: 16,
+    paddingTop: 32,
+    paddingBottom: 43,
     borderTopRightRadius: 24,
     borderTopLeftRadius: 24,
-  },
-  photoBox: {
-    height: 60,
-    marginBottom: 32,
-  },
-  photoContainer: {
-    width: 120,
-    height: 120,
-    backgroundColor: '#f6f6f6',
-    borderRadius: 16,
-    position: 'absolute',
-    top: -60,
-    right: -60,
-  },
-  addPlus: {
-    position: 'relative',
-    top: -60,
-    right: -60,
   },
   RegContainer: {
     flex: 1,
@@ -154,14 +120,13 @@ const styles = StyleSheet.create({
     marginTop: 32,
   },
   inputMail: {
-    marginTop: 16,
+    marginTop: 32,
   },
   inputPass: {
     margin: 0,
   },
   passContainer: {
     width: '100%',
-    marginBottom: 43,
     marginTop: 16,
   },
   showPasswordButton: {
@@ -179,7 +144,7 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     paddingLeft: 16,
     backgroundColor: '#fff',
-    paddingBottom: 45,
+    paddingBottom: 111,
   },
   registerBtn: {
     width: '100%',
