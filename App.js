@@ -21,8 +21,8 @@ export default function App() {
     <View style={styles.container}>
       <ImageBackground source={bgImg} resizeMode="cover" style={styles.image}>
         {/* <Registarion /> */}
-        {/* <LoginSreen /> */}
-        <Posts />
+        <LoginSreen />
+        {/* <Posts /> */}
         <StatusBar style="auto" />
       </ImageBackground>
     </View>
@@ -31,7 +31,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     fontFamily: 'Roboto-Regular',
   },
   image: {
